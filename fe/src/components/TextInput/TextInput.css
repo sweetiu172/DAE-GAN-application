@@ -1,0 +1,28 @@
+.inputfield {
+    margin-top: 30px;
+}
+
+.form-label {
+    margin-right: 20px;
+}
+
+.from-control {
+    width: 95%;
+}
+
+.imgcontainer {
+    margin: auto;
+    width: 100%;
+    max-width: 256px;
+}
+
+.imgcontainer .selected {
+    width: 256px;
+    height: 256px;
+    margin: 0 auto;
+    border: 4px solid #75c9fa;
+}
+
+.full-height {
+    height: 100vh;
+}
