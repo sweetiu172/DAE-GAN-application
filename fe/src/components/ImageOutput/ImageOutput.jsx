@@ -1,11 +1,14 @@
 import React from 'react'
 import './ImageOutput.css'
 
-function ImageOutput() {
-    const imgSrc = 'Black_Footed_Albatross_0001_796111_s-1_0'
+function ImageOutput({image}) {
+    // const imgSrc = image.data?.image_path
+    const initPath = '/../../image/content/generates/single/'
     return (
         <div className='center-block text-center'>
-            <img src={require(`../../image/${imgSrc}.png`)} alt='Selected'/>
+            { image !== undefined &&
+            <img src={require(`${initPath}cc${image.image_path}.png`)} alt='Selected'/>
+            }
         </div>
     )
 }

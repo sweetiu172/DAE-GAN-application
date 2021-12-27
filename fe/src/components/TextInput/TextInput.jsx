@@ -1,12 +1,54 @@
-import React from 'react'
-import {FormGroup, Label, Input} from 'reactstrap';
+import React, {useState} from 'react'
+import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
 import './TextInput.css';
-function Search(){
+function TextInput({parentCallback}){
+    const [formData, setFormData] = useState('')
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        handleFormSubmit()
+    }
+
+    const handleFormSubmit = () => {
+        fetch('/get_text_input', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: formData, 
+            }),
+        })
+        .then((res) => {
+            res.json()
+        })
+        .then(message => {
+            setFormData('')
+            document.getElementById('text-input').value = ''
+            fetchMyAPI()
+        })
+        .catch((err) => console.log(err))
+    }
+
+
+    async function fetchMyAPI() {
+        let response = await fetch('/get_image')
+        response = await response.json()
+        parentCallback(response)
+    }
+
+    const handleChange = (event) => {
+        setFormData(event.target.value)
+    }
+
     return(
-        <FormGroup className="input-group-lg">
-            <Label for="exampleText">Text Area</Label>
-            <Input type="textarea" name="text" id="exampleText" />
-        </FormGroup>
+        <Form onSubmit={handleSubmit}>
+            <FormGroup className="input-group-lg">
+                <Label for="text-input">Text Area</Label>
+                <Input type="textarea" name="text-input" id="text-input" onChange={handleChange}/>
+                <Button type='submit' color="success">success</Button>{' '}
+            </FormGroup>
+        </Form>
         // <section className='py4 cointainer'>
         //     <div className='row justify-content-center'>
         //         <div className='inputfield col-12 mb-5'>
@@ -27,4 +69,4 @@ function Search(){
     )
 }
 
-export default Search
+export default TextInput
