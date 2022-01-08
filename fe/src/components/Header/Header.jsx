@@ -28,7 +28,7 @@ const Header = () => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink href="/tools">Components</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
