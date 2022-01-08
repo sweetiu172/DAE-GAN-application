@@ -12,11 +12,14 @@ function ImageOutput({image}) {
     //   };
     const initPath = './image/content/generates/single/'
     return (
-        <div className='center-block text-center'>
+        <div  className='center-block text-center imagecontainer'>
+            <div className='center-block text-center'>
             { image !== undefined &&
             <img src={require(`${initPath}cc${image.image_path}.png`)} alt='Selected'/>
             }
+            </div>
         </div>
+        
     )
 }
 

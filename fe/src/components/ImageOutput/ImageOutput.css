@@ -1,8 +1,16 @@
 .center-block {
-    margin-left:auto;
-    margin-right:auto;
-    display:block;
- }
- .text-center {
-    text-align:center
- }
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.text-center {
+    text-align: center
+}
+
+.imagecontainer {
+    border-radius: 8px;
+    width: 265px;
+    height: 265px;
+    border: 5px solid gray;
+}
