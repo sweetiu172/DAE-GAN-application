@@ -10,7 +10,7 @@ function TextInput({parentCallback}){
     }
 
     const handleFormSubmit = () => {
-        fetch('/get_text_input', {
+        fetch('http://localhost:5000/get_text_put', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ function TextInput({parentCallback}){
 
 
     async function fetchMyAPI() {
-        let response = await fetch('/get_image')
+        let response = await fetch('http://localhost:5000/get_image')
         response = await response.json()
         return response
     }
@@ -49,7 +49,7 @@ function TextInput({parentCallback}){
             <FormGroup className="input-group-lg">
                 <Label for="text-input">Text Area</Label>
                 <Input type="textarea" name="text-input" id="text-input" onChange={handleChange}/>
-                <Button type='submit' color="success">success</Button>{' '}
+                <Button className='mt-5 ' type='submit' color="success">success</Button>{' '}
             </FormGroup>
         </Form>
         // <section className='py4 cointainer'>
