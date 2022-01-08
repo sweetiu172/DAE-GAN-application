@@ -35,11 +35,11 @@ export default function ImageCard({ place, checked }) {
   return (
     <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Card className={classes.root}>
-        <CardMedia
+        {/* <CardMedia
           className={classes.media}
-          image={place.imageUrl}
+          // image={place.imageUrl}
           title="Contemplative Reptile"
-        />
+        /> */}
         <CardContent>
           <Typography
             gutterBottom

@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     background: 'none',
+    
   },
   appbarWrapper: {
     width: '80%',
@@ -88,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2rem',
   },
   colorText: {
-    color: '#5AFF3D',
+    color: '#24a437',
   },
   container: {
     textAlign: 'center',
@@ -113,7 +114,7 @@ export default function Header() {
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
-            My<span className={classes.colorText}>Island.</span>
+            <span className={classes.colorText}>DEA-GAN</span>
           </h1>
           {/* <IconButton>
             <SortIcon className={classes.icon} />
@@ -129,7 +130,7 @@ export default function Header() {
         <div className={classes.container}>
           <h1 className={classes.title}>
             Welcome to <br />
-            My<span className={classes.colorText}>Island.</span>
+            Our<span className={classes.colorText}>Project.</span>
           </h1>
           <Scroll to="place-to-visit" smooth={true}>
             <IconButton>

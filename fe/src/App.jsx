@@ -15,7 +15,7 @@ import { CssBaseline } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
-    backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/blobs.svg'})`,
+    backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/layered-waves-haikei.svg'})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
   },
