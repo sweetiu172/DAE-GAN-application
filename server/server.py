@@ -6,6 +6,7 @@ from model import RNN_ENCODER, CNN_ENCODER
 from miscc.config import cfg, cfg_from_file
 from miscc.utils import weights_init, load_params, copy_G_params
 from miscc.utils import mkdir_p
+import time
 
 import torch.utils.data as data
 from torch.autograd import Variable
@@ -189,7 +190,7 @@ def generate_image(caption):
     print('Load G from: ', model_dir)
 
 
-    save_dir = "../fe/src/image/content/generates"
+    save_dir = "../fe/src/components/ImageOutput/image/content/generates"
     mkdir_p(save_dir)
 
     # prepare data minimal
@@ -254,14 +255,13 @@ def get_text_input():
 @app.route("/get_image")
 def get_image():
     query = Images.query.all()
-    result = {}
-    for row in query:
-        result = {
-            'id': row.id,
-            'name': row.name,
-            'image_path': row.image_path
-        }
+    result = {
+        'id': query[-1].id,
+        'name': query[-1].name,
+        'image_path': query[-1].image_path
+    }
     image_path = generate_image(result['name'])
+    time.sleep(3)
     query = Images.query.filter_by(id=result['id']).first()
     query.image_path = image_path
     result['image_path'] = image_path

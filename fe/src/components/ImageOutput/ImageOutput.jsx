@@ -3,7 +3,14 @@ import './ImageOutput.css'
 
 function ImageOutput({image}) {
     // const imgSrc = image.data?.image_path
-    const initPath = '/../../image/content/generates/single/'
+    // const tryRequire = (path) => {
+    //     try {
+    //      return require(`${path}`);
+    //     } catch (err) {
+    //      return null;
+    //     }
+    //   };
+    const initPath = './image/content/generates/single/'
     return (
         <div className='center-block text-center'>
             { image !== undefined &&

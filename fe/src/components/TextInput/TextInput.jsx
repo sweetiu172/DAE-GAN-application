@@ -25,7 +25,10 @@ function TextInput({parentCallback}){
         .then(message => {
             setFormData('')
             document.getElementById('text-input').value = ''
-            fetchMyAPI()
+            return fetchMyAPI()
+        })
+        .then((json) => {
+            parentCallback(json)
         })
         .catch((err) => console.log(err))
     }
@@ -34,7 +37,7 @@ function TextInput({parentCallback}){
     async function fetchMyAPI() {
         let response = await fetch('/get_image')
         response = await response.json()
-        parentCallback(response)
+        return response
     }
 
     const handleChange = (event) => {
