@@ -20,7 +20,7 @@ export default function () {
   return (
     <div className={classes.root} id="place-to-visit">
       <ImageCard place={places[1]} checked={checked} />
-      <ImageCard place={places[0]} checked={checked} />
+      {/* <ImageCard place={places[0]} checked={checked} /> */}
     </div>
   );
 }

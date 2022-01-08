@@ -115,9 +115,9 @@ export default function Header() {
           <h1 className={classes.appbarTitle}>
             My<span className={classes.colorText}>Island.</span>
           </h1>
-          <IconButton>
+          {/* <IconButton>
             <SortIcon className={classes.icon} />
-          </IconButton>
+          </IconButton> */}
         </Toolbar>
       </AppBar>
 

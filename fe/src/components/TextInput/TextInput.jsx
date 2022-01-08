@@ -10,7 +10,7 @@ function TextInput({parentCallback}){
     }
 
     const handleFormSubmit = () => {
-        fetch('http://localhost:5000/get_text_put', {
+        fetch('http://localhost:5000/get_text_input', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
