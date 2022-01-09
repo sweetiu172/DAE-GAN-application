@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2rem',
   },
   colorText: {
-    color: '#24a437',
+    color: '#f8331a',
   },
   container: {
     textAlign: 'center',
@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '4.5rem',
   },
   goDown: {
-    color: '#5AFF3D',
+    color: '#f8331a',
     fontSize: '4rem',
   },
 }));
