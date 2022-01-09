@@ -49,7 +49,7 @@ function TextInput({parentCallback}){
             <FormGroup className="input-group-lg">
                 <Label for="text-input">Text Area</Label>
                 <Input type="textarea" name="text-input" id="text-input" onChange={handleChange}/>
-                <Button className='mt-5 ' type='submit' color="success">success</Button>{' '}
+                <Button style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5 ' type='submit' >success</Button>{' '}
             </FormGroup>
         </Form>
         // <section className='py4 cointainer'>
