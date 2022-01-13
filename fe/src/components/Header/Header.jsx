@@ -61,9 +61,14 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
-import SortIcon from '@material-ui/icons/Sort';
+import HomeIcon from '@material-ui/icons/Home';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+// import HomeIcon from '@mui/icons-material/Home';
+// import SortIcon from '@material-ui/icons/Sort';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
+import Link from '@material-ui/core/Link';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,11 +90,15 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: '1',
   },
   icon: {
-    color: '#fff',
+    color: '#f8331a',
     fontSize: '2rem',
+    margin: '0 20px',
   },
   colorText: {
     color: '#f8331a',
+  },
+  colorText2: {
+    color: 'rgb(123, 27, 59)',
   },
   container: {
     textAlign: 'center',
@@ -116,9 +125,12 @@ export default function Header() {
           <h1 className={classes.appbarTitle}>
             <span className={classes.colorText}>DEA-GAN</span>
           </h1>
-          {/* <IconButton>
-            <SortIcon className={classes.icon} />
-          </IconButton> */}
+          <Link href="/">
+            <HomeIcon className={classes.icon} />
+          </Link>
+          <Link href="/tools">
+            <PlayArrowIcon className={classes.icon} />
+          </Link>
         </Toolbar>
       </AppBar>
 
@@ -129,8 +141,8 @@ export default function Header() {
       >
         <div className={classes.container}>
           <h1 className={classes.title}>
-            Welcome to <br />
-            Our<span className={classes.colorText}>Project.</span>
+          <span className={classes.colorText2}>Welcome to </span><br />
+          <span className={classes.colorText2}>Our</span><span className={classes.colorText}>Project.</span>
           </h1>
           <Scroll to="place-to-visit" smooth={true}>
             <IconButton>
