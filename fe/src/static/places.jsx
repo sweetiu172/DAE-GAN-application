@@ -7,9 +7,10 @@ const places = [
     time: 1500,
   },
   {
-    title: 'Bora Bora',
+    title: 'Contact Us       ',
     description:
-      'Shaped like a giant sombrero, this lush volcanic island stars in countless South Pacific fantasies. The focal point and best asset of this tropical beauty is its ravishing lagoon in technicolor turquoise. Fish, turtles, sharks, and rays swim in the clear waters.',
+      'Contac Us 51800950@student.tdtu.edu.vn',
+      
     imageUrl: process.env.PUBLIC_URL + '/assets/island2.jpg',
     time: 1500,
   },
