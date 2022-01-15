@@ -68,7 +68,8 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link as Scroll } from 'react-scroll';
 import Link from '@material-ui/core/Link';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faKiwiBird } from "@fortawesome/free-solid-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -96,6 +97,8 @@ const useStyles = makeStyles((theme) => ({
   },
   colorText: {
     color: '#f8331a',
+    
+    
   },
   colorText2: {
     color: 'rgb(123, 27, 59)',
@@ -123,7 +126,7 @@ export default function Header() {
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar className={classes.appbarWrapper}>
           <h1 className={classes.appbarTitle}>
-            <span className={classes.colorText}>DEA-GAN</span>
+            <span className={classes.colorText}><FontAwesomeIcon icon={faKiwiBird} size = '1x'></FontAwesomeIcon>DAE-GAN</span>
           </h1>
           <Link href="/">
             <HomeIcon className={classes.icon} />
@@ -144,11 +147,7 @@ export default function Header() {
           <span className={classes.colorText2}>Welcome to </span><br />
           <span className={classes.colorText2}>Our</span><span className={classes.colorText}>Project.</span>
           </h1>
-          <Scroll to="place-to-visit" smooth={true}>
-            <IconButton>
-              <ExpandMoreIcon className={classes.goDown} />
-            </IconButton>
-          </Scroll>
+          
         </div>
       </Collapse>
     </div>

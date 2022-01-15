@@ -9,9 +9,9 @@ import { Collapse } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 645,
+    maxwidth: '1440',
     background: 'rgba(0,0,0,0.5)',
-    margin: '20px',
+   
   },
   media: {
     height: 440,
@@ -35,11 +35,7 @@ export default function ImageCard({ place, checked }) {
   return (
     <Collapse in={checked} {...(checked ? { timeout: 1000 } : {})}>
       <Card className={classes.root}>
-        {/* <CardMedia
-          className={classes.media}
-          // image={place.imageUrl}
-          title="Contemplative Reptile"
-        /> */}
+       
         <CardContent>
           <Typography
             gutterBottom

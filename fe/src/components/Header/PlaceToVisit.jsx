@@ -5,7 +5,8 @@ import places from '../../static/places';
 import useWindowPosition from '../../hook/useWindowPosition';
 const useStyles = makeStyles((theme) => ({
   root: {
-    minHeight: '100vh',
+    minHeight: '20vh',
+    marginTop: '300px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -20,7 +21,7 @@ export default function () {
   return (
     <div className={classes.root} id="place-to-visit">
       <ImageCard place={places[1]} checked={checked} />
-      {/* <ImageCard place={places[0]} checked={checked} /> */}
+     
     </div>
   );
 }
