@@ -49,7 +49,7 @@ function TextInput({parentCallback}){
         <Form onSubmit={handleSubmit}>
             <FormGroup className="input-group-lg">
                 <Label for="text-input" style={{color:"#f8331a",fontSize:"30px"}}>Text Input</Label>
-                <Input type="textarea" name="text-input" id="text-input" onChange={handleChange}/>
+                <Input style={{height:"100px"}} type="textarea" name="text-input" id="text-input" onChange={handleChange}/>
                 <Button style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5 ' type='submit' >success</Button>{' '}
             </FormGroup>
         </Form>

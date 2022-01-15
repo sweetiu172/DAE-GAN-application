@@ -11,7 +11,7 @@ import Tools from './components/Tools/Tools';
 import Header from './components/Header/Header';
 import PlaceToVisit from './components/Header/PlaceToVisit';
 import { CssBaseline } from '@material-ui/core';
-
+import Footer from "./components/Footer/Footer";
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
@@ -31,7 +31,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/tools" element={<Tools />} />
         </Routes>
-        <PlaceToVisit />
+        <Footer />
       </div>
     );
 }
