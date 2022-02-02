@@ -170,13 +170,13 @@ def generate_image(caption):
     text_encoder = text_encoder.cuda(gpu)
     text_encoder.eval()
 
-    image_encoder = CNN_ENCODER(cfg.TEXT.EMBEDDING_DIM)
-    img_encoder_path = cfg.TRAIN.NET_E.replace('text_encoder', 'image_encoder')
-    state_dict = torch.load(img_encoder_path, map_location=lambda storage, loc: storage)
-    image_encoder.load_state_dict(state_dict)
-    print('Load image encoder from:', img_encoder_path)
-    image_encoder = image_encoder.cuda(gpu)
-    image_encoder.eval()
+    # image_encoder = CNN_ENCODER(cfg.TEXT.EMBEDDING_DIM)
+    # img_encoder_path = cfg.TRAIN.NET_E.replace('text_encoder', 'image_encoder')
+    # state_dict = torch.load(img_encoder_path, map_location=lambda storage, loc: storage)
+    # image_encoder.load_state_dict(state_dict)
+    # print('Load image encoder from:', img_encoder_path)
+    # image_encoder = image_encoder.cuda(gpu)
+    # image_encoder.eval()
 
     batch_size = 2
     nz = cfg.GAN.Z_DIM
@@ -237,6 +237,7 @@ def generate_image(caption):
         # img_name = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(cap_len))
         fullpath = '%s%s.png' % (s_tmp, img_name)
         im.save(fullpath)
+        break
     return img_name
 
 @app.route("/get_text_input", methods = ['POST'])
@@ -261,13 +262,33 @@ def get_image():
         'image_path': query[-1].image_path
     }
     image_path = generate_image(result['name'])
-    time.sleep(3)
+    # time.sleep(3)
     query = Images.query.filter_by(id=result['id']).first()
     query.image_path = image_path
     result['image_path'] = image_path
+    print(result)
     db.session.commit()
     return {
         "data": result
+    }
+
+@app.route("/get_recommend_input")
+def get_recommend_input():
+    data = []
+    for i in range(5):
+        randomIdx = random.randint(0, len(test_captions))
+        caption = ""
+        for cap in test_captions[randomIdx]: 
+            caption += ixtoword[cap] + " "
+        eachSen = {
+            'id': i + 1,
+            'value': caption
+        }
+        data.append(eachSen)
+    return {
+        'code': 200,
+        'message': 'Success',
+        'data': data
     }
 
 if __name__ == "__main__":

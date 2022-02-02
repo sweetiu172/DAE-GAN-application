@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 // import './App.css';
 // import Header from '../Header/Header.jsx';
 import InputText from '../TextInput/TextInput';
-import { Container, Row, Col, Alert } from 'reactstrap';
+import { Container, Row, Col, Alert, Label } from 'reactstrap';
 import { Chip } from '@material-ui/core';
-
+import Replay from '@material-ui/icons/Replay';
 import ImageOutput from "../ImageOutput/ImageOutput";
 // import Home from './components/Home/Home.jsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -16,10 +16,22 @@ const useStyles = makeStyles((theme) => ({
     width: "30vw",
     justifyContent: "left",
   },
+  select: {
+    margin: '2px 0',
+    height: "50px",
+    width: "30vw",
+    justifyContent: "left",
+  },
   alert: {
     width: "30vw",
     justifyContent: "left",
-  }
+  },
+  icon: {
+    color: '#f8331a',
+    fontSize: '2rem',
+    // margin: '0 20px',
+    cursor: 'pointer',
+  },
 }));
 
 
@@ -27,46 +39,48 @@ const useStyles = makeStyles((theme) => ({
 function Tools() {
     const classes = useStyles();
     const [image, setImage] = useState({})
+    const [recommend, setRecommend] = useState([{}])
+    const childCompRef = useRef()
+
     async function callback(image) {
       setImage(image)
     }
-    const recommend = [
-      {
-        id: 5,
-        value: "this bird has wings that are grey and has a yellow bill",
-      },
-      {
-        id: 2,
-        value: "a plump bird with yellow belly black coverts and with wingbars the bill is short and black",
-      },
-      {
-        id: 3,
-        value: "this all grey bird has a very small head compared to the rest of it s body which has thick plumage",
-      },
-      {
-        id: 4,
-        value: "a small bird that has a black head and throat yellow face breast and belly and yellow wings with black tips",
-      },
-      {
-        id: 1,
-        value: "small bird with a white body two orange stripes above it and a black body from the head and the tail with white spots throughout the back",
-      },
-    ];
+
+    async function fetchRecommendInput() {
+      fetch('http://localhost:5000/get_recommend_input').then(
+        res => res.json()
+      )
+      .then(data => {
+        setRecommend(data.data)
+      })
+      .catch((err) => console.log(err))
+    }
+
+    useEffect(() => {
+      fetchRecommendInput()
+    }, [])
+
     const handleClickBadge = (event) => {
-      event.stopPropagation();
-      document.getElementById('text-input').value = event.target.innerHTML
+      // event.stopPropagation();
+      document.getElementById('text-input').value = event.target.innerText
+      childCompRef.current.manualChange(event.target.innerText)
+    }
+    const handleClickReplayIcon = () => {
+      fetchRecommendInput()
     }
     const listItems = recommend.map(item => {
       return (
-        <Row key={item.id}>
-          <Col xs="5">
+        <Row
+          key={item.id}>
+          <Col
+            xs="5">
             <Chip
+              onClick={handleClickBadge}
               className={classes.chip}
               label={item.value}
               size="small"
               variant="outlined"
               value={item.value}
-              onClick={handleClickBadge}
             />
           </Col>
         </Row>
@@ -76,7 +90,20 @@ function Tools() {
         <div className='tools'>
           <Container className='mt-5'>
             <div>
-              Recommend input:
+              <Row>
+                  <Col xs="6">
+                    <Row>
+                      <Col xs="10">
+                        <Label style={{color:"#f8331a",fontSize:"30px"}}>Recommend Input:</Label>
+                      </Col>
+                      <Col>
+                        <Replay
+                          className={classes.icon}
+                          onClick={handleClickReplayIcon} />
+                      </Col>
+                    </Row>
+                  </Col>
+              </Row>
               {listItems}
               <Alert
                 className={classes.alert}
@@ -85,7 +112,7 @@ function Tools() {
                 Bởi vì sự thiếu sót của model các bạn cần phải nhập đúng ngữ pháp !!
               </Alert>            </div>
             <Row style={{marginTop:"10px",}}>
-              <Col xs="5"><InputText parentCallback={callback}/></Col>
+              <Col xs="5"><InputText parentCallback={callback} ref={childCompRef}/></Col>
               {image.data !== {} &&
                 <Col><ImageOutput image={image.data}/></Col>
               }

@@ -65,8 +65,6 @@ import HomeIcon from '@material-ui/icons/Home';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 // import HomeIcon from '@mui/icons-material/Home';
 // import SortIcon from '@material-ui/icons/Sort';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Link as Scroll } from 'react-scroll';
 import Link from '@material-ui/core/Link';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKiwiBird } from "@fortawesome/free-solid-svg-icons";

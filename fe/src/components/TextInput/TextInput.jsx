@@ -1,12 +1,14 @@
-import React, {useState} from 'react'
-import {Form, FormGroup, Label, Input, Button} from 'reactstrap';
+import React, {useState, forwardRef, useImperativeHandle} from 'react'
+import {Form, FormGroup, Label, Input, Button, Spinner} from 'reactstrap';
 import './TextInput.css';
-function TextInput({parentCallback}){
+const TextInput = forwardRef((props, ref) => {
     const [formData, setFormData] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = (event) => {
         event.preventDefault()
         handleFormSubmit()
+
     }
 
     const handleFormSubmit = () => {
@@ -23,12 +25,12 @@ function TextInput({parentCallback}){
             res.json()
         })
         .then(message => {
-            setFormData('')
-            document.getElementById('text-input').value = ''
+            setIsLoading(true);
             return fetchMyAPI()
         })
         .then((json) => {
-            parentCallback(json)
+            props.parentCallback(json)
+            setIsLoading(false)
         })
         .catch((err) => console.log(err))
     }
@@ -40,8 +42,19 @@ function TextInput({parentCallback}){
         return response
     }
 
+    useImperativeHandle(ref, () => ({
+        manualChange(event) {
+            setFormData(event)
+        },
+    }))
+
     const handleChange = (event) => {
         setFormData(event.target.value)
+    }
+
+    const handleReset = () => {
+        setFormData('')
+        document.getElementById('text-input').value = ''
     }
 
     return(
@@ -49,8 +62,24 @@ function TextInput({parentCallback}){
         <Form onSubmit={handleSubmit}>
             <FormGroup className="input-group-lg">
                 <Label for="text-input" style={{color:"#f8331a",fontSize:"30px"}}>Text Input</Label>
-                <Input style={{height:"100px"}} type="textarea" name="text-input" id="text-input" onChange={handleChange}/>
-                <Button style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5 ' type='submit' >success</Button>{' '}
+                <Input style={{height:"100px"}} type="textarea" name="text-input" id="text-input" onInput={handleChange}/>
+                <>
+                    {!isLoading ?
+                        <Button style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5 ' type='submit' >success</Button>
+                        : <Button  style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5' disabled>
+                            <Spinner
+                                as="span"
+                                animation="grow"
+                                size="sm"
+                                role="status"
+                                aria-hidden="true"
+                            />
+                            Loading...
+                        </Button>
+                    }
+                    {' '}
+                    <Button style={{backgroundColor:"#198754",borderColor:"#198754"}} variant="flat" className='mt-5' onClick={handleReset}>reset</Button>
+                </>
             </FormGroup>
         </Form>
      
@@ -73,6 +102,6 @@ function TextInput({parentCallback}){
         //     </div>
         // </section>
     )
-}
+})
 
 export default TextInput
