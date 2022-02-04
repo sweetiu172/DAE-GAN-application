@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.58b96596.css",
+    "main.js": "/static/js/main.48ea6448.js",
+    "static/js/787.e66d5691.chunk.js": "/static/js/787.e66d5691.chunk.js",
+    "static/media/ccs-1_0.png": "/static/media/ccs-1_0.bb78be87820e8ab12f4d.png",
+    "static/media/Black_Footed_Albatross_0001_796111_s-1_0.png": "/static/media/Black_Footed_Albatross_0001_796111_s-1_0.3adc1c077a959697fad4.png",
+    "index.html": "/index.html",
+    "main.58b96596.css.map": "/static/css/main.58b96596.css.map",
+    "main.48ea6448.js.map": "/static/js/main.48ea6448.js.map",
+    "787.e66d5691.chunk.js.map": "/static/js/787.e66d5691.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58b96596.css",
+    "static/js/main.48ea6448.js"
+  ]
+}
