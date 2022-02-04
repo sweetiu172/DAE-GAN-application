@@ -12,7 +12,7 @@ const TextInput = forwardRef((props, ref) => {
     }
 
     const handleFormSubmit = () => {
-        fetch('http://localhost:5000/get_text_input', {
+        fetch('/get_text_input', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const TextInput = forwardRef((props, ref) => {
 
 
     async function fetchMyAPI() {
-        let response = await fetch('http://localhost:5000/get_image')
+        let response = await fetch('/get_image')
         response = await response.json()
         return response
     }

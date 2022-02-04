@@ -47,7 +47,7 @@ function Tools() {
     }
 
     async function fetchRecommendInput() {
-      fetch('http://localhost:5000/get_recommend_input').then(
+      fetch('/get_recommend_input').then(
         res => res.json()
       )
       .then(data => {
