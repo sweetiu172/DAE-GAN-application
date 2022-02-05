@@ -8,6 +8,8 @@ from miscc.config import cfg, cfg_from_file
 from miscc.utils import weights_init, load_params, copy_G_params
 from miscc.utils import mkdir_p
 from flask_cors import CORS, cross_origin
+from flask_ngrok import run_with_ngrok
+
 import time
 
 import torch.utils.data as data
@@ -28,6 +30,8 @@ from PIL import Image
 import json
 app = Flask(__name__, static_folder='../fe/build', static_url_path='')
 CORS(app)
+run_with_ngrok(app)   
+
 app.config["SQLALCHEMY_DATABASE_URI"]= "sqlite:///DEA-GAN.db"
 db = SQLAlchemy(app)
 
