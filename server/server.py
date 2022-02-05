@@ -28,7 +28,7 @@ import os
 from PIL import Image
 
 import json
-app = Flask(__name__, static_folder='../fe/build', static_url_path='')
+app = Flask(__name__)
 CORS(app)
 run_with_ngrok(app)   
 
@@ -301,10 +301,10 @@ def get_recommend_input():
         'data': data
     }
 
-@app.route("/")
-@cross_origin()
-def serve():
-    return send_from_directory(app.static_folder, 'index.html')
+# @app.route("/")
+# @cross_origin()
+# def serve():
+#     return send_from_directory(app.static_folder, 'index.html')
     
 if __name__ == "__main__":
     # Bind to PORT if defined, otherwise default to 5000.
