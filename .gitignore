@@ -1,3 +1,12 @@
 /fe/node_modules
-/server/venv
-/server/DAE-GAN
+venv
+# /fe/build
+package-lock.json
+/server/__pycache__
+/server/content
+/server/DAE-GAN/eval
+/server/DAE-GAN/DAMSMencoders
+/server/DAE-GAN/code
+/server/DAE-GAN/data
+/server/DAE-GAN/model/netG.pth
+/server/DAE-GAN/model/netG_2.pth

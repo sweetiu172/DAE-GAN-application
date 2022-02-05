@@ -1,11 +1,13 @@
 from flask import Flask
 from flask import request
+from flask.helpers import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from model import G_DCGAN, G_NET
 from model import RNN_ENCODER, CNN_ENCODER
 from miscc.config import cfg, cfg_from_file
 from miscc.utils import weights_init, load_params, copy_G_params
 from miscc.utils import mkdir_p
+from flask_cors import CORS, cross_origin
 import time
 
 import torch.utils.data as data
@@ -24,7 +26,8 @@ import os
 from PIL import Image
 
 import json
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../fe/build', static_url_path='')
+CORS(app)
 app.config["SQLALCHEMY_DATABASE_URI"]= "sqlite:///DEA-GAN.db"
 db = SQLAlchemy(app)
 
@@ -241,6 +244,7 @@ def generate_image(caption):
     return img_name
 
 @app.route("/get_text_input", methods = ['POST'])
+@cross_origin()
 def get_text_input():
     if request.method == 'POST':
         current_caption = json.loads(json.dumps(request.get_json()))
@@ -254,6 +258,7 @@ def get_text_input():
     }
 
 @app.route("/get_image")
+@cross_origin()
 def get_image():
     query = Images.query.all()
     result = {
@@ -273,6 +278,7 @@ def get_image():
     }
 
 @app.route("/get_recommend_input")
+@cross_origin()
 def get_recommend_input():
     data = []
     for i in range(5):
@@ -291,5 +297,12 @@ def get_recommend_input():
         'data': data
     }
 
+@app.route("/")
+@cross_origin()
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
+    
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Bind to PORT if defined, otherwise default to 5000.
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
