@@ -31,12 +31,10 @@ function Home() {
         <Container>
           <Row>
             <Col className={classes.eachRow} xs={4}>
-              <h1>About the DEA-GAN.</h1>
+              <h1>Về DAE-GAN.</h1>
               <p>
-                With Media Library, you can upload video from anywhe
-                and have confidence that all your clips will work on any device.
-                Kapwing supports a wide array of file formats including .mp4, .mov, .png, .gif, .jpg, .avi, .webm, and much more.
-                Kapwing also supports full transcoding and conversion to optimize your files for the best possible editing experience
+               DAE-GAN hay còn gọi là Dynamic Aspect-aware GAN, là một cải thiện của mô hình GAN. Cụ thể GAN là mô hình được dùng để sinh ảnh từ văn bản.
+               Dự án này sử dụng mô hình DAE-GAN để hỗ trợ sinh ảnh các loại chim từ một đoạn văn bản mô tả ngắn về loài chim đó.
               </p>
             </Col>
             <Col>
@@ -44,13 +42,12 @@ function Home() {
               <div className={classes.root}></div>
             </Col>
           </Row>
-          <Row>
+          {/* <Row>
             <Col>
-              {/* <img src={require(`('../../../public/assets/framework.png'})`)} alt='Selected'/> */}
               <div className={classes.root}></div>
             </Col>
             <Col className={classes.eachRow} xs={4}>
-              <h1>How to use</h1>
+              <h1>Về dự án</h1>
               <p>
                 With Media Library, you can upload video from anywhe
                 and have confidence that all your clips will work on any device.
@@ -70,10 +67,9 @@ function Home() {
               </p>
             </Col>
             <Col>
-              {/* <img src={require(`('../../../public/assets/framework.png'})`)} alt='Selected'/> */}
               <div className={classes.root}></div>
             </Col>
-          </Row>
+          </Row> */}
         </Container>
       </div>
     );

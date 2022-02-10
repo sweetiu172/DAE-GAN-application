@@ -65,7 +65,7 @@ const TextInput = forwardRef((props, ref) => {
                 <Input style={{height:"100px"}} type="textarea" name="text-input" id="text-input" onInput={handleChange}/>
                 <>
                     {!isLoading ?
-                        <Button style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5 ' type='submit' >success</Button>
+                        <Button style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5 ' type='submit' >Submit</Button>
                         : <Button  style={{backgroundColor:"#7b1b3b",borderColor:"#7b1b3b"}} variant="flat" className='mt-5' disabled>
                             <Spinner
                                 as="span"
