@@ -1,7 +1,7 @@
 {
   "name": "deagan",
   "version": "0.1.0",
-  "proxy": "https://5000-b9e10235-2879-480c-b6dc-ff443e3410d4.ql-asia-southeast1-muke.cloudshell.dev/",
+  "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

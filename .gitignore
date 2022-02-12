@@ -9,4 +9,3 @@ package-lock.json
 /server/DAE-GAN/code
 /server/DAE-GAN/data
 /server/DAE-GAN/model/netG.pth
-/server/DAE-GAN/model/netG_2.pth

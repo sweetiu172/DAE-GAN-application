@@ -60,7 +60,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
+import { AppBar, Toolbar, Collapse } from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 // import HomeIcon from '@mui/icons-material/Home';
@@ -143,7 +143,7 @@ export default function Header() {
         <div className={classes.container}>
           <h1 className={classes.title}>
           <span className={classes.colorText2}>Welcome to </span><br />
-          <span className={classes.colorText2}>Our</span><span className={classes.colorText}>Project.</span>
+          <span className={classes.colorText2}>Our</span><span className={classes.colorText}>Project</span>
           </h1>
           
         </div>

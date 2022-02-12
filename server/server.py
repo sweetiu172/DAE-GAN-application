@@ -8,7 +8,6 @@ from miscc.config import cfg, cfg_from_file
 from miscc.utils import weights_init, load_params, copy_G_params
 from miscc.utils import mkdir_p
 from flask_cors import CORS, cross_origin
-from flask_ngrok import run_with_ngrok
 
 import time
 
@@ -30,7 +29,6 @@ from PIL import Image
 import json
 app = Flask(__name__)
 CORS(app)
-run_with_ngrok(app)   
 
 app.config["SQLALCHEMY_DATABASE_URI"]= "sqlite:///DEA-GAN.db"
 db = SQLAlchemy(app)
@@ -248,7 +246,7 @@ def generate_image(caption):
     return img_name
 
 @app.route("/get_text_input", methods = ['POST'])
-@cross_origin()
+# @cross_origin()
 def get_text_input():
     if request.method == 'POST':
         current_caption = json.loads(json.dumps(request.get_json()))
@@ -262,7 +260,7 @@ def get_text_input():
     }
 
 @app.route("/get_image")
-@cross_origin()
+# @cross_origin()
 def get_image():
     query = Images.query.all()
     result = {
@@ -282,7 +280,7 @@ def get_image():
     }
 
 @app.route("/get_recommend_input")
-@cross_origin()
+# @cross_origin()
 def get_recommend_input():
     data = []
     for i in range(5):
@@ -308,5 +306,6 @@ def get_recommend_input():
     
 if __name__ == "__main__":
     # Bind to PORT if defined, otherwise default to 5000.
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    # port = int(os.environ.get('PORT', 5000))
+    # app.run(host='0.0.0.0', port=port)
+    app.run()
