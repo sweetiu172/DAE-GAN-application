@@ -5,7 +5,6 @@ package-lock.json
 /server/__pycache__
 /server/content
 /server/DAE-GAN/eval
-/server/DAE-GAN/DAMSMencoders
 /server/DAE-GAN/code
 /server/DAE-GAN/data
 /server/DAE-GAN/model/netG.pth
